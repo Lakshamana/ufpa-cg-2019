@@ -4,12 +4,8 @@ export default class FloodFill {
     this.color = buffer.addColor(color)
   }
 
-  setBuffer(buffer) {
-    this.buffer = buffer
-  }
-
   setColor(color) {
-    this.color = color
+    this.color = this.buffer.addColor(color)
   }
 
   fill(initPoint) {

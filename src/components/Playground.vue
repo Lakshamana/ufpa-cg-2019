@@ -72,48 +72,21 @@ export default {
 
   mounted() {
     const { canvas } = this.$refs
-
     const buffer = new MemoryBuffer(canvas.size)
 
     const ellipse = new Ellipse(buffer, '#0066ff')
     ellipse.draw([25, 35], 15, 8)
-    canvas.readMemoryBuffer(buffer)
 
     const circle = new Circle(buffer, '#800000')
     circle.draw([7, 21], 5)
-    canvas.readMemoryBuffer(buffer)
 
     const flood = new FloodFill(buffer, '#cd4001')
     flood.fill([25, 35])
+
+    flood.setColor('#edf545')
+    flood.fill([25, 25])
+
     canvas.readMemoryBuffer(buffer)
-
-    // flood.setBuffer(ellipseBuffer)
-    // flood.fill([25, 35])
-    // canvas.readMemoryBuffer(ellipseBuffer, '#ff66ff')
-
-    // const bezierBuffer = bezier(canvas.size, [[40, 22], [29, 21], [40, 36]])
-    // canvas.readMemoryBuffer(bezierBuffer, '#ffff00')
-
-    // //Não reutilizar buffers - use bufCopy e copie as formas p/ um
-    // //buffer container
-    // const lineBuffer1 = bresenham(canvas.size, [45, 45], [16, 15])
-    // canvas.readMemoryBuffer(lineBuffer1, '#006600')
-
-    // const lineBuffer2 = bresenham(canvas.size, [41, 22], [41, 46])
-    // canvas.readMemoryBuffer(lineBuffer2, '#0000ff')
-
-    // const lineBuffer3 = bresenham(canvas.size, [15, 21], [41, 26])
-    // canvas.readMemoryBuffer(lineBuffer3, '#00eedd')
-
-    // const buffers = [lineBuffer1, lineBuffer2, lineBuffer3]
-    // const buf = new MemoryBuffer(canvas.size)
-
-    // buffers.forEach(b => buf.bufCopy(b))
-
-    // flood.setBuffer(buf)
-    // console.log(JSON.stringify(buf.grid))
-    // flood.fill([37, 28])
-    // canvas.readMemoryBuffer(buf, '#e4c002')
   }
 }
 </script>
